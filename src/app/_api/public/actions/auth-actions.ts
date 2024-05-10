@@ -42,7 +42,16 @@ export async function registerUser(data: FormData) : Promise<SuccessResponse | E
       const response = await requestHandler("auth/register", "POST", null, data)
       return handleSuccessResponse(response, "User registered successfully");
     } catch (error) {
-        console.log(error);
+        return handleErrorResponse(error);
+    }
+}
+
+
+export async function registerCompany(data: FormData) : Promise<SuccessResponse | ErrorResponse> {
+    try {
+      const response = await requestHandler("company/register", "POST", null, data)
+      return handleSuccessResponse(response, "Company registered successfully");
+    } catch (error) {
         return handleErrorResponse(error);
     }
 }

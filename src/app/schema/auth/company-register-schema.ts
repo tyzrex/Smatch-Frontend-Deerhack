@@ -25,6 +25,9 @@ export const companyInfoSchema = z.object({
     address: z.string(
         {required_error: "Address is required"}
     ).min(3).max(255),
+    phone: z.coerce.number(
+        {required_error: "Phone number is required"}
+    ).refine((phone) => phone.toString().length === 10, "Phone number must be 10 digits").refine((phone) => phone > 0, "Phone number must be a positive number"),
 })
 
 export const companyLogoSchema = z.object({

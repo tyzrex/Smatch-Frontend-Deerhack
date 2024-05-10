@@ -24,12 +24,17 @@ import { Button } from "../ui/button";
 import { FormProgress } from "../from-progress";
 import Image from "next/image";
 import { X } from "lucide-react";
+import { registerCompany } from "@/app/_api/public/actions/auth-actions";
+import { toast } from "sonner";
+import { showErrorToasts } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 const MAX_STEPS = 5;
 
 export default function RegisterAsCompany() {
   const [step, setStep] = useState(1);
   const [file, setFile] = useState<File | null>(null);
+  const router = useRouter();
   const formSteps = [
     "Basic Info",
     "Company Info",
@@ -50,20 +55,24 @@ export default function RegisterAsCompany() {
       const additionalInfo = additionalInfoForm.getValues();
       const hrInfo = hrForm.getValues();
 
-      const data = {
+      const data: { [key: string]: any } = {
         ...basicInfo,
         ...companyInfo,
         ...companyLogo,
         ...additionalInfo,
         ...hrInfo,
       };
-
-      try {
-        console.log("Data is being validated", data);
-        await companyRegisterSchema.safeParseAsync(data);
-        console.log("Data is valid", data);
-      } catch (error) {
-        console.error("Data is invalid", error);
+      const formData = new FormData();
+      for (const key in data) {
+        formData.append(key, data[key]);
+      }
+      const response = await registerCompany(formData);
+      if (response.success === true) {
+        toast.success(response.message);
+        setStep(1);
+        router.replace("/");
+      } else {
+        showErrorToasts(response.errorData);
       }
     }
   };
@@ -247,6 +256,26 @@ export default function RegisterAsCompany() {
                 </FormItem>
               )}
             />
+
+            <FormField
+              control={companyInfoForm.control}
+              name="phone"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Phone</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Enter your company phone number"
+                      type="number"
+                      {...field}
+                    />
+                  </FormControl>
+
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
             <div className="flex justify-between">
               <Button type="button" onClick={handleBack}>
                 Previous
