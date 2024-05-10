@@ -22,8 +22,8 @@ export async function requestHandler<TResponse = unknown, TRequestBody = Default
         // if (session?.user?.access) {
         //     headers.append('Authorization', `Bearer ${session.user.access}`);
         // }
-
-        const apiUrl = process.env.API_URL || 'http://localhost:8000/api/';
+        console.log(process.env.NEXT_PUBLIC_API_URL)
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/';
         const response = await fetch(`${apiUrl}${url}`, {
             method: method,
             headers: headers,
@@ -55,10 +55,12 @@ export async function requestHandler<TResponse = unknown, TRequestBody = Default
                 throw new AppError(response.statusText || "Something went wrong", response.status, response.statusText);
             }
 
-            // Construct error message
-            // let errorMessage = formatErrorMessage(data);
-            let errorMessage = data;
-
+            let errorMessage;
+            if (Array.isArray(data.message)) {
+                errorMessage = data.message.join(" | ");
+            } else {
+                errorMessage = data.message || "Unknown error occurred";
+            }
             throw new AppError(response.statusText, response.status, errorMessage);
         }
     } catch (error) {

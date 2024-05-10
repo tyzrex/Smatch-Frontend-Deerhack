@@ -23,7 +23,7 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { FormProgress } from "../from-progress";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { X } from "lucide-react";
 
 const MAX_STEPS = 5;
 
