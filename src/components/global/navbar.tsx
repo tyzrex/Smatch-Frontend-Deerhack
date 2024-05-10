@@ -127,12 +127,12 @@ export default async function Navbar() {
                     </DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem>
-                      <Link href="/register" prefetch={false}>
+                      <Link href="/register/user" prefetch={false}>
                         Applicant Register Page
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                      <Link href="/company/register" prefetch={false}>
+                      <Link href="/register/company" prefetch={false}>
                         Company Register Page
                       </Link>
                     </DropdownMenuItem>
