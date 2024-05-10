@@ -6,7 +6,7 @@ export default function JoinToday() {
   return (
     <>
       <section className="w-full py-12 md:py-24 lg:py-32 border-t">
-        <div className="container px-8 md:px-6">
+        <div className="global-container">
           <div className="grid gap-10 px-10 md:gap-16 lg:grid-cols-2">
             <div className="space-y-4">
               <div className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800">

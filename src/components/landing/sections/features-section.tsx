@@ -4,7 +4,7 @@ export default function FeaturesSection() {
   return (
     <>
       <section className="w-full py-12 md:py-24 lg:py-32">
-        <div className="container px-8 md:px-6">
+        <div className="global-container">
           <div className="grid items-start gap-8 sm:grid-cols-2 md:gap-12 lg:grid-cols-4">
             <div className="grid gap-1">
               <AppleIcon className="h-8 w-8 text-gray-900 dark:text-gray-50" />

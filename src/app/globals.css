@@ -87,3 +87,9 @@ h6 {
 body {
   font-family: var(--font-rethink-sans), sans-serif;
 }
+
+@layer components {
+  .global-container {
+    @apply container px-8 md:px-6;
+  }
+}

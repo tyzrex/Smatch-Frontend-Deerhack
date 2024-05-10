@@ -23,9 +23,9 @@ export default async function Navbar() {
         <div className="container mx-auto flex h-16 items-center justify-between px-8 md:px-6">
           <Link className="flex items-center gap-2" href="#">
             <Package2Icon className="h-6 w-6" />
-            <span className="text-lg font-semibold">
+            <p className="text-lg font-bold">
               <span className="text-primary">S</span>MATCH
-            </span>
+            </p>
           </Link>
           <div className="hidden md:block flex-1 max-w-md">
             <div className="relative">
