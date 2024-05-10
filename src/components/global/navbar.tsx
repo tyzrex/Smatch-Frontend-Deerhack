@@ -15,7 +15,6 @@ import {
   ShoppingCartIcon,
 } from "lucide-react";
 import { Button } from "../ui/button";
-import { auth } from "@/app/_api/private/auth";
 export default async function Navbar() {
   const user = null;
   return (
