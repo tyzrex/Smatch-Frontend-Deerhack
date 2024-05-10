@@ -10,11 +10,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import {
   HeartIcon,
-  Package2Icon,
   SearchIcon,
   ShoppingCartIcon,
+  ChevronDown,
+  CircleEqual,
 } from "lucide-react";
 import { Button } from "../ui/button";
+import MobileMenu from "./mobile-menu";
 export default async function Navbar() {
   const user = null;
   return (
@@ -22,8 +24,8 @@ export default async function Navbar() {
       <header className="sticky top-0 z-50 bg-white shadow-sm dark:bg-gray-950">
         <div className="container mx-auto flex h-16 items-center justify-between px-8 md:px-6">
           <Link className="flex items-center gap-2" href="#">
-            <Package2Icon className="h-6 w-6" />
-            <p className="text-lg font-bold">
+            <CircleEqual className="h-6 w-6" />
+            <p className="text-xl font-extrabold">
               <span className="text-primary">S</span>MATCH
             </p>
           </Link>
@@ -41,80 +43,105 @@ export default async function Navbar() {
             <Link
               className="text-sm font-medium hover:text-gray-900 dark:hover:text-gray-50"
               href="#"
+              prefetch={false}
             >
               Home
             </Link>
             <Link
               className="text-sm font-medium hover:text-gray-900 dark:hover:text-gray-50"
               href="#"
-            >
-              Shop
-            </Link>
-            <Link
-              className="text-sm font-medium hover:text-gray-900 dark:hover:text-gray-50"
-              href="#"
+              prefetch={false}
             >
               About
             </Link>
             <Link
               className="text-sm font-medium hover:text-gray-900 dark:hover:text-gray-50"
               href="#"
+              prefetch={false}
+            >
+              Privacy
+            </Link>
+            <Link
+              className="text-sm font-medium hover:text-gray-900 dark:hover:text-gray-50"
+              href="#"
+              prefetch={false}
             >
               Contact
             </Link>
           </nav>
-          {user ? (
-            <div className="flex items-center gap-2">
-              <Button className="rounded-full" size="icon" variant="ghost">
-                <HeartIcon className="h-5 w-5" />
-                <span className="sr-only">Favorites</span>
-              </Button>
-              <Button className="rounded-full" size="icon" variant="ghost">
-                <ShoppingCartIcon className="h-5 w-5" />
-                <span className="sr-only">Cart</span>
-              </Button>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button className="rounded-full" size="icon" variant="ghost">
-                    <img
-                      alt="User avatar"
-                      className="rounded-full"
-                      height={32}
-                      src="/placeholder.svg"
-                      style={{
-                        aspectRatio: "32/32",
-                        objectFit: "cover",
-                      }}
-                      width={32}
-                    />
-                    <span className="sr-only">User menu</span>
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>Profile</DropdownMenuItem>
-                  <DropdownMenuItem>Orders</DropdownMenuItem>
-                  <DropdownMenuItem>Settings</DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>Logout</DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
-          ) : (
-            <>
+          <div className="flex items-center space-x-4">
+            {user ? (
               <div className="flex items-center gap-2">
-                <Link href={"/login"}>
-                  <Button className="bg-transparent text-black hover:text-primary hover:bg-transparent">
-                    Login
-                  </Button>
-                </Link>
-                <Link href={"/register"}>
-                  <Button>Register</Button>
-                </Link>
+                <Button className="rounded-full" size="icon" variant="ghost">
+                  <HeartIcon className="h-5 w-5" />
+                  <span className="sr-only">Favorites</span>
+                </Button>
+                <Button className="rounded-full" size="icon" variant="ghost">
+                  <ShoppingCartIcon className="h-5 w-5" />
+                  <span className="sr-only">Cart</span>
+                </Button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      className="rounded-full"
+                      size="icon"
+                      variant="ghost"
+                    >
+                      <img
+                        alt="User avatar"
+                        className="rounded-full"
+                        height={32}
+                        src="/placeholder.svg"
+                        style={{
+                          aspectRatio: "32/32",
+                          objectFit: "cover",
+                        }}
+                        width={32}
+                      />
+                      <span className="sr-only">User menu</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem>Profile</DropdownMenuItem>
+                    <DropdownMenuItem>Orders</DropdownMenuItem>
+                    <DropdownMenuItem>Settings</DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem>Logout</DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </div>
-            </>
-          )}
+            ) : (
+              <>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button size="default" className="space-x-2">
+                      <span>Register</span>
+                      <ChevronDown className="h-4 w-4" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuLabel>
+                      Register as Company or Applicant
+                    </DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem>
+                      <Link href="/register" prefetch={false}>
+                        Applicant Register Page
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <Link href="/company/register" prefetch={false}>
+                        Company Register Page
+                      </Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </>
+            )}
+            <MobileMenu />
+          </div>
         </div>
       </header>
     </>
