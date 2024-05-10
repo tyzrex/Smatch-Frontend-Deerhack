@@ -20,7 +20,7 @@ export default async function Navbar() {
   return (
     <>
       <header className="sticky top-0 z-50 bg-white shadow-sm dark:bg-gray-950">
-        <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
+        <div className="container mx-auto flex h-16 items-center justify-between px-8 md:px-6">
           <Link className="flex items-center gap-2" href="#">
             <Package2Icon className="h-6 w-6" />
             <span className="text-lg font-semibold">
