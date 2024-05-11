@@ -41,6 +41,7 @@ export async function requestHandler<TResponse = unknown, TRequestBody = Default
             } catch (err) {
                 data = {};
             }
+            console.log(data)
             return {
                 success: true,
                 data: data as TResponse,

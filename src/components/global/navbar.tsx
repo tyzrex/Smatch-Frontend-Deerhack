@@ -17,8 +17,10 @@ import {
 } from "lucide-react";
 import { Button } from "../ui/button";
 import MobileMenu from "./mobile-menu";
+import { auth } from "@/app/_api/private/auth";
+import Image from "next/image";
 export default async function Navbar() {
-  const user = null;
+  const user = await auth();
   return (
     <>
       <header className="sticky top-0 z-50 bg-white shadow-sm dark:bg-gray-950">
@@ -87,11 +89,11 @@ export default async function Navbar() {
                       size="icon"
                       variant="ghost"
                     >
-                      <img
+                      <Image
                         alt="User avatar"
                         className="rounded-full"
                         height={32}
-                        src="/placeholder.svg"
+                        src={`/api/images/${user.avatar}`}
                         style={{
                           aspectRatio: "32/32",
                           objectFit: "cover",
