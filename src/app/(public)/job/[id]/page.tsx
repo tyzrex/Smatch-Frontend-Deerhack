@@ -17,6 +17,8 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
     return null;
   }
 
+  console.log(jobDetail.data);
+
   return (
     <>
       <JobDetail data={jobDetail.data} />

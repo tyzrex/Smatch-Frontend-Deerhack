@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 export default function DashboardNav() {
   return (
     <>
-      <header className="flex h-16 items-center justify-between border-b bg-white px-6 dark:border-gray-800 dark:bg-gray-950">
+      <header className="flex h-16 items-center justify-between border-b bg-white px-6 dark:border-gray-800 dark:bg-gray-950 sticky top-0">
         <div className="flex items-center gap-6">
           <Link
             className="flex items-center gap-2 text-lg font-semibold"

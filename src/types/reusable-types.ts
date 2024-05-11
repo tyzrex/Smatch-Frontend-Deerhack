@@ -27,6 +27,8 @@ export interface JobData {
   jobQualification: string;
   jobExperience: string;
   jobSalary: string;
+  requirements: string[]
+  benefits: string[]
   company: Company;
 }
 

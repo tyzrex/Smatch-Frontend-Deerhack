@@ -55,41 +55,12 @@ export default function JobDetail({ data }: { data: JobData }) {
                 Requirements
               </h2>
               <ul className="mt-6 space-y-4 text-gray-500 dark:text-gray-400">
-                <li className="flex items-start gap-2">
-                  <CheckIcon className="h-5 w-5 flex-shrink-0 text-gray-900 dark:text-gray-50" />
-                  <span>
-                    5+ years of experience in frontend development, with a
-                    strong understanding of JavaScript, HTML, and CSS.
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckIcon className="h-5 w-5 flex-shrink-0 text-gray-900 dark:text-gray-50" />
-                  <span>
-                    Proficient in at least one modern JavaScript framework
-                    (React, Vue, or Angular).
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckIcon className="h-5 w-5 flex-shrink-0 text-gray-900 dark:text-gray-50" />
-                  <span>
-                    Experience with responsive design and cross-browser
-                    compatibility.
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckIcon className="h-5 w-5 flex-shrink-0 text-gray-900 dark:text-gray-50" />
-                  <span>
-                    Strong problem-solving skills and the ability to work
-                    independently.
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckIcon className="h-5 w-5 flex-shrink-0 text-gray-900 dark:text-gray-50" />
-                  <span>
-                    Familiarity with modern frontend tooling (Webpack, Babel,
-                    ESLint, etc.).
-                  </span>
-                </li>
+                {data.requirements.map((requirement) => (
+                  <li className="flex items-start gap-2">
+                    <CheckIcon className="h-5 w-5 flex-shrink-0 text-gray-900 dark:text-gray-50" />
+                    <span>{requirement}</span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -101,30 +72,12 @@ export default function JobDetail({ data }: { data: JobData }) {
             <div>
               <h2 className="text-2xl font-bold tracking-tight">Benefits</h2>
               <ul className="mt-6 space-y-4 text-gray-500 dark:text-gray-400">
-                <li className="flex items-start gap-2">
-                  <CheckIcon className="h-5 w-5 flex-shrink-0 text-gray-900 dark:text-gray-50" />
-                  <span>Competitive salary and equity</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckIcon className="h-5 w-5 flex-shrink-0 text-gray-900 dark:text-gray-50" />
-                  <span>
-                    Comprehensive health, dental, and vision insurance
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckIcon className="h-5 w-5 flex-shrink-0 text-gray-900 dark:text-gray-50" />
-                  <span>401(k) retirement plan with employer matching</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckIcon className="h-5 w-5 flex-shrink-0 text-gray-900 dark:text-gray-50" />
-                  <span>Generous paid time off and holidays</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckIcon className="h-5 w-5 flex-shrink-0 text-gray-900 dark:text-gray-50" />
-                  <span>
-                    Professional development and learning opportunities
-                  </span>
-                </li>
+                {data.benefits.map((benefit) => (
+                  <li className="flex items-start gap-2">
+                    <CheckIcon className="h-5 w-5 flex-shrink-0 text-gray-900 dark:text-gray-50" />
+                    <span>{benefit}</span>
+                  </li>
+                ))}
               </ul>
             </div>
             <div>

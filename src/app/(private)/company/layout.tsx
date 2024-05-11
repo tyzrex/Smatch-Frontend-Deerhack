@@ -23,7 +23,7 @@ export default async function CompanyLayout({
       <DashboardNav />
       <div className="flex min-h-screen">
         <DashboardSidebarCompany />
-        {children}
+        <div className="md:ml-64 w-full">{children}</div>
       </div>
     </>
   );

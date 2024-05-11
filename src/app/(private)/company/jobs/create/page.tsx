@@ -26,8 +26,10 @@ import { toast } from "sonner";
 import { cn, showErrorToasts } from "@/lib/utils";
 import { createNewJob } from "@/app/_api/private/company-actions";
 import { PlusCircleIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function CreateJobPage() {
+  const router = useRouter();
   const form = useForm<z.infer<typeof addJobSchema>>({
     resolver: zodResolver(addJobSchema),
     defaultValues: {
@@ -85,6 +87,7 @@ export default function CreateJobPage() {
     console.log(response);
     if (response.success === true) {
       toast.success(response.message);
+      router.push("/company/jobs");
     } else {
       showErrorToasts(response.errorData);
     }
@@ -97,7 +100,7 @@ export default function CreateJobPage() {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="grid grid-cols-1 md:grid-cols-2 gap-5"
+            className="flex flex-col"
           >
             <FormField
               control={form.control}
