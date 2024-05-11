@@ -89,7 +89,6 @@ export default function RegisterAsUser() {
       const response = await registerUser(formData);
       if (response.success === true) {
         toast.success(response.message);
-        setStep(1);
         router.replace("/");
       } else {
         showErrorToasts(response.errorData);

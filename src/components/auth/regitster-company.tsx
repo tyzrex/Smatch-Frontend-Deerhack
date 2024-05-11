@@ -69,7 +69,6 @@ export default function RegisterAsCompany() {
       const response = await registerCompany(formData);
       if (response.success === true) {
         toast.success(response.message);
-        setStep(1);
         router.replace("/");
       } else {
         showErrorToasts(response.errorData);
