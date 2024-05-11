@@ -34,25 +34,7 @@ export default function DashboardUserSidebar() {
               </Link>
             </div>
           </div>
-          <div>
-            <h3 className="mb-2 text-sm font-medium text-primary">Insights</h3>
-            <div className="grid gap-2">
-              <Link
-                className="flex items-center gap-2 rounded-md py-2 px-3 font-medium hover:bg-gray-100 dark:hover:bg-gray-800"
-                href="#"
-              >
-                <BarChartIcon className="h-5 w-5 text-primary" />
-                Analytics
-              </Link>
-              <Link
-                className="flex items-center gap-2 rounded-md py-2 px-3 font-medium hover:bg-gray-100 dark:hover:bg-gray-800"
-                href="#"
-              >
-                <FileTextIcon className="h-5 w-5 text-primary" />
-                Reports
-              </Link>
-            </div>
-          </div>
+
           <div>
             <h3 className="mb-2 text-sm font-medium text-primary">Settings</h3>
             <div className="grid gap-2">

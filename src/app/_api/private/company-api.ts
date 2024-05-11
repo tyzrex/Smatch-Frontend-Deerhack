@@ -19,3 +19,13 @@ export async function getDashboardData(){
         , "GET",session)
     return response.data
 }
+
+export async function getJobDetailbyId(
+    { jobId, page, limit }: { jobId: string; page: string; limit: string }
+){
+    const session = await getServerSession(options)
+    const response = await requestHandler<any>(
+            `jobs/company-job/${jobId}?page=${page}&take=${limit}`
+        , "GET",session)
+    return response.data
+}

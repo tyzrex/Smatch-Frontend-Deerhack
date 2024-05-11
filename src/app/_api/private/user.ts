@@ -15,3 +15,10 @@ export async function getAppliedJobs(
     const response = await requestHandler<any>(`jobs/applied-jobs?page=${page}&take=${limit}`, "GET", session)
     return response.data
 }
+
+
+export async function getAppliedJobStatus(jobId: string){
+    const session = await getServerSession(options)
+    const response = await requestHandler<any>(`jobs/job-status/${jobId}`, "GET", session)
+    return response.data
+}

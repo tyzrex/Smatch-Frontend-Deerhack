@@ -38,4 +38,13 @@ export const appliedJobColumns: ColumnDef<JobDTO>[] = [
     header: "Location",
     accessorKey: "location",
   },
+  {
+    header: "Actions",
+    accessorKey: "id",
+    cell: ({ row }) => (
+      <Link href={`/user/applied-jobs/${row.original.id}`}>
+        <p className="text-blue-500">View Status</p>
+      </Link>
+    ),
+  },
 ];

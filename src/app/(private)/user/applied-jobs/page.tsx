@@ -29,13 +29,11 @@ export default async function AppliedJobsPage(props: JobsPageProps) {
     return <div>Failed to fetch jobs</div>;
   }
 
-  console.log(allJobs);
-
   const total_pages = Math.ceil(allJobs.meta.length / limit);
 
   const mappedData = allJobs.data.map((job: any) => {
     return {
-      id: job.id,
+      id: job.job.id,
       status: job.status,
       title: job.job.title,
       type: job.job.jobType,
