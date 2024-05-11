@@ -1,4 +1,5 @@
 import { auth } from "@/app/_api/private/auth";
+import DashboardSidebarCompany from "@/components/company/sidebar-company-dash";
 import DashboardNav from "@/components/reusables/dashboard-nav";
 import DashboardUserSidebar from "@/components/user/user-sidebar";
 import { redirect } from "next/navigation";
@@ -22,7 +23,7 @@ export default async function CompanyLayout({
     <>
       <DashboardNav />
       <div className="flex min-h-screen">
-        <DashboardUserSidebar />
+        <DashboardSidebarCompany />
         <div className="md:ml-64 w-full">{children}</div>
       </div>
     </>
