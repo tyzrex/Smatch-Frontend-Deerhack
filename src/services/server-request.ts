@@ -18,7 +18,7 @@ export async function requestHandler<TResponse = unknown, TRequestBody = Default
         if (body && !(body instanceof FormData)) {
             headers.append('Content-Type', 'application/json');
         }
-
+        console.log(session)
         if (session?.user.accessToken) {
             headers.append('Authorization', `Bearer ${session.user.accessToken}`);
         }
@@ -51,7 +51,6 @@ export async function requestHandler<TResponse = unknown, TRequestBody = Default
             let data: any;
             try {
                 data = await response.json();
-                console.log(data);
             } catch (err) {
                 throw new AppError(response.statusText || "Something went wrong", response.status, response.statusText);
             }
