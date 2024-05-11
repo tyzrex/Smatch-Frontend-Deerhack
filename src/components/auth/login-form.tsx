@@ -120,7 +120,7 @@ export function LoginForm() {
         </Button>
       </form>
       <div className="mt-4 text-center text-sm">
-        Don't have an account?
+        Don&apos;t have an account?
         <Link className="underline" href="#">
           Sign up
         </Link>
