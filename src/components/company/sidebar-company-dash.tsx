@@ -41,13 +41,6 @@ export default function DashboardSidebarCompany() {
                 <BriefcaseIcon className="h-5 w-5 text-primary" />
                 View Opened Jobs
               </Link>
-              <Link
-                className="flex items-center gap-2 rounded-md py-2 px-3 font-medium hover:bg-gray-100 dark:hover:bg-gray-800"
-                href="#"
-              >
-                <UsersIcon className="h-5 w-5 text-primary" />
-                Candidates
-              </Link>
             </div>
           </div>
 
