@@ -20,5 +20,6 @@ export function handleSuccessResponse(response: any, message: string): SuccessRe
         success: true,
         status: response.status,
         message: message,
+        data: response.data,
     };
 }

@@ -20,6 +20,7 @@ import MobileMenu from "./mobile-menu";
 import { auth } from "@/app/_api/private/auth";
 import Image from "next/image";
 import LogoutButton from "../reusables/logout";
+import { CommandMenu } from "./command-chat";
 export default async function Navbar() {
   const user = await auth();
 
@@ -72,6 +73,7 @@ export default async function Navbar() {
             >
               Contact
             </Link>
+            <CommandMenu />
           </nav>
           <div className="flex items-center space-x-4">
             {user ? (
