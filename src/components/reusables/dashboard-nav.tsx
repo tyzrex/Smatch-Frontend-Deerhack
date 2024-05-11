@@ -1,8 +1,20 @@
 import { Package2Icon } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import LogoutButton from "./logout";
+import { auth } from "@/app/_api/private/auth";
+import Image from "next/image";
 
-export default function DashboardNav() {
+export default async function DashboardNav() {
+  const user = await auth();
   return (
     <>
       <header className="flex h-16 items-center justify-between border-b bg-white px-6 dark:border-gray-800 dark:bg-gray-950 sticky top-0">
@@ -42,20 +54,43 @@ export default function DashboardNav() {
           </nav>
         </div>
         <div className="flex items-center gap-4">
-          <Button className="rounded-full" size="icon" variant="ghost">
-            <img
-              alt="Avatar"
-              className="rounded-full"
-              height="32"
-              src="/placeholder.svg"
-              style={{
-                aspectRatio: "32/32",
-                objectFit: "cover",
-              }}
-              width="32"
-            />
-            <span className="sr-only">Toggle user menu</span>
-          </Button>
+          {user && (
+            <div className="flex items-center gap-2">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button className="rounded-full" size="icon" variant="ghost">
+                    <Image
+                      alt="User avatar"
+                      className="rounded-full"
+                      height={32}
+                      src={`/api/images/${user.avatar}`}
+                      style={{
+                        aspectRatio: "32/32",
+                        objectFit: "cover",
+                      }}
+                      width={32}
+                    />
+                    <span className="sr-only">User menu</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuLabel>
+                    Welcome, {user.name}
+                    <br />
+                    <span className="text-xs text-gray-500">{user.email}</span>
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>Profile</DropdownMenuItem>
+                  <DropdownMenuItem>Orders</DropdownMenuItem>
+                  <DropdownMenuItem>Settings</DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    <LogoutButton />
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          )}
         </div>
       </header>
     </>

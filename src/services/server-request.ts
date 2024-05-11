@@ -18,7 +18,6 @@ export async function requestHandler<TResponse = unknown, TRequestBody = Default
         if (body && !(body instanceof FormData)) {
             headers.append('Content-Type', 'application/json');
         }
-        console.log(session)
         if (session?.user.accessToken) {
             headers.append('Authorization', `Bearer ${session.user.accessToken}`);
         }
@@ -41,7 +40,6 @@ export async function requestHandler<TResponse = unknown, TRequestBody = Default
             } catch (err) {
                 data = {};
             }
-            console.log(data)
             return {
                 success: true,
                 data: data as TResponse,
@@ -67,7 +65,6 @@ export async function requestHandler<TResponse = unknown, TRequestBody = Default
         if (error instanceof AppError) {
             throw error;
         } else {
-            console.log(error);
             errorHandler(error instanceof Error ? error : new Error(String(error)));
         }
     }

@@ -55,12 +55,12 @@ export default function JobDetail({ data }: { data: JobData }) {
                 Requirements
               </h2>
               <ul className="mt-6 space-y-4 text-gray-500 dark:text-gray-400">
-                {data.requirements.map((requirement) => (
-                  <li className="flex items-start gap-2">
+                {data?.requirements?.map((requirement, idx: number) => (
+                  <li className="flex items-start gap-2" key={idx}>
                     <CheckIcon className="h-5 w-5 flex-shrink-0 text-gray-900 dark:text-gray-50" />
                     <span>{requirement}</span>
                   </li>
-                ))}
+                )) ?? "No requirements listed"}
               </ul>
             </div>
           </div>
@@ -72,12 +72,12 @@ export default function JobDetail({ data }: { data: JobData }) {
             <div>
               <h2 className="text-2xl font-bold tracking-tight">Benefits</h2>
               <ul className="mt-6 space-y-4 text-gray-500 dark:text-gray-400">
-                {data.benefits.map((benefit) => (
-                  <li className="flex items-start gap-2">
+                {data?.benefits?.map((benefit, idx: number) => (
+                  <li className="flex items-start gap-2" key={idx}>
                     <CheckIcon className="h-5 w-5 flex-shrink-0 text-gray-900 dark:text-gray-50" />
                     <span>{benefit}</span>
                   </li>
-                ))}
+                )) ?? "No benefits listed"}
               </ul>
             </div>
             <div>

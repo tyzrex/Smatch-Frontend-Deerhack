@@ -11,3 +11,11 @@ export async function getAllJobs({ page, limit }: { page: string; limit: string 
         , "GET",session)
     return response.data
 }
+
+export async function getDashboardData(){
+    const session = await getServerSession(options)
+    const response = await requestHandler<any>(
+            `company/dashboard`
+        , "GET",session)
+    return response.data
+}

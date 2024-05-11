@@ -18,6 +18,8 @@ const rethink_sans = localFont({
   variable: "--font-rethink-sans",
 });
 
+export const dynamic = "force-dynamic";
+
 export default function RootLayout({
   children,
 }: Readonly<{

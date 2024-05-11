@@ -19,7 +19,6 @@ import { Button } from "../ui/button";
 import MobileMenu from "./mobile-menu";
 import { auth } from "@/app/_api/private/auth";
 import Image from "next/image";
-import { signOut } from "next-auth/react";
 import LogoutButton from "../reusables/logout";
 export default async function Navbar() {
   const user = await auth();
