@@ -1,4 +1,6 @@
 import { auth } from "@/app/_api/private/auth";
+import DashboardSidebarCompany from "@/components/company/sidebar-company-dash";
+import DashboardNav from "@/components/reusables/dashboard-nav";
 import { redirect } from "next/navigation";
 
 export default async function CompanyLayout({
@@ -16,5 +18,13 @@ export default async function CompanyLayout({
     redirect("/?error=unauthorized");
   }
 
-  return <>{children}</>;
+  return (
+    <>
+      <DashboardNav />
+      <div className="flex min-h-screen">
+        <DashboardSidebarCompany />
+        {children}
+      </div>
+    </>
+  );
 }

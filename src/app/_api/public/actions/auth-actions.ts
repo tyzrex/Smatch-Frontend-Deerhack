@@ -2,13 +2,13 @@
 
 import { requestHandler } from "@/services/server-request";
 
-interface SuccessResponse {
+export interface SuccessResponse {
     success: true;
     status?: number;
     message?: string; // Optional success message
 }
 
-interface ErrorResponse {
+export interface ErrorResponse {
     success: false;
     status: number;
     errorData: any; // Consider using a more specific type if possible

@@ -19,9 +19,9 @@ export async function requestHandler<TResponse = unknown, TRequestBody = Default
             headers.append('Content-Type', 'application/json');
         }
 
-        // if (session?.user?.access) {
-        //     headers.append('Authorization', `Bearer ${session.user.access}`);
-        // }
+        if (session?.user.accessToken) {
+            headers.append('Authorization', `Bearer ${session.user.accessToken}`);
+        }
         console.log(process.env.NEXT_PUBLIC_API_URL)
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/';
         const response = await fetch(`${apiUrl}${url}`, {
