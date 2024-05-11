@@ -64,7 +64,7 @@ export const options: NextAuthOptions = {
               }
             }
           } else {
-            const res = await requestHandler<JwtCreate>("auth/company/login", "POST", null, credentials);
+            const res = await requestHandler<JwtCreate>("company/login", "POST", null, credentials);
             const userToken = res.data;
 
             if (userToken?.data.accessToken) {

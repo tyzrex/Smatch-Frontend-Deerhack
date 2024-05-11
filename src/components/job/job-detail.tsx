@@ -164,9 +164,9 @@ export default function JobDetail() {
                   success.
                 </p>
                 <p>
-                  If you're excited to join a dynamic and forward-thinking
-                  organization, we'd love to hear from you. Apply now and let's
-                  build something amazing together!
+                  If you&apos;re excited to join a dynamic and forward-thinking
+                  organization, we&apos;d love to hear from you. Apply now and
+                  let&apos;s build something amazing together!
                 </p>
               </div>
             </div>
