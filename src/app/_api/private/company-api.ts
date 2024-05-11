@@ -25,7 +25,7 @@ export async function getJobDetailbyId(
 ){
     const session = await getServerSession(options)
     const response = await requestHandler<any>(
-            `jobs/company-job/${jobId}?page=${page}&take=${limit}`
+            `jobs/company-job/${jobId}`
         , "GET",session)
     return response.data
 }

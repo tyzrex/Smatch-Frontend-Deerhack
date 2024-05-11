@@ -17,3 +17,18 @@ export async function createNewJob(data: any): Promise<SuccessResponse | ErrorRe
         return handleErrorResponse(error);
     }
 }
+
+export async function changeJobStatus(
+    {id, status}: {id: number, status: string}
+): Promise<SuccessResponse | ErrorResponse>{
+    try {
+        const session = await getServerSession(options)
+        const response = await requestHandler(`jobs/update/${id}`, "PUT", session, {
+            status: status
+        })
+        return handleSuccessResponse(response, "Job status changed successfully");
+    } catch (error) {
+        console.log(error)
+        return handleErrorResponse(error);
+    }
+}

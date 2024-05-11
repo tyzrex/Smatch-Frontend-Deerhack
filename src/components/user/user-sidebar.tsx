@@ -18,7 +18,7 @@ export default function DashboardUserSidebar() {
             <div className="grid gap-2">
               <Link
                 className="flex items-center gap-2 rounded-md py-2 px-3 font-medium hover:bg-gray-100 dark:hover:bg-gray-800"
-                href="/dashboard"
+                href="/user/dashboard"
                 prefetch={false}
               >
                 <LayoutGridIcon className="h-5 w-5 text-primary" />

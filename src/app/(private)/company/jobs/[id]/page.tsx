@@ -27,7 +27,7 @@ export default async function JobsDetail(props: JobsPageProps) {
     return <div>Failed to fetch jobs</div>;
   }
 
-  console.log(allJobs);
+  console.log(allJobs.data.users);
 
   //   const total_pages = Math.ceil(allJobs.meta.length / limit);
 
@@ -35,6 +35,64 @@ export default async function JobsDetail(props: JobsPageProps) {
     <>
       <div className="p-6">
         <h1 className="text-2xl font-semibold px-6">Job Detail</h1>
+
+        <table className="min-w-full divide-y divide-gray-200 mt-10">
+          <thead className="bg-gray-50">
+            <tr>
+              <th
+                scope="col"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                User Name
+              </th>
+              <th
+                scope="col"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                User Email
+              </th>
+
+              <th
+                scope="col"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                Match Percentage
+              </th>
+
+              <th
+                scope="col"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                Status
+              </th>
+            </tr>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-200">
+            {allJobs.data.users.map((user: any) => (
+              <tr key={user.id}>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <div className="flex items-center">
+                    <div className="ml-4">
+                      <div className="text-sm font-medium text-gray-900">
+                        {user.user.name}
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <div className="text-sm text-gray-900">{user.user.email}</div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  {user.matchingPercentage}%
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  {user.status}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
         {/* <DataTable
           data={allJobs?.data}
           columns={jobDataColumns}
@@ -43,6 +101,8 @@ export default async function JobsDetail(props: JobsPageProps) {
           navigator={true}
           goToLink="Add Jobs"
         />
+
+
         <Pagination
           currentPage={parseInt(props.searchParams.page || "1")}
           path="jobs"
