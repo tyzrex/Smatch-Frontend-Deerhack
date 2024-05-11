@@ -8,4 +8,9 @@ export interface FeaturedJob {
   jobQualification: string;
   jobExperience: string;
   jobSalary: string;
+  company: {
+    id: number;
+    name: string;
+    logo: string;
+  }
 }
