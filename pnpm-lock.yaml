@@ -29,6 +29,9 @@ dependencies:
   clsx:
     specifier: ^2.1.1
     version: 2.1.1
+  go-go-try:
+    specifier: ^5.0.0
+    version: 5.0.0
   lucide-react:
     specifier: ^0.378.0
     version: 0.378.0(react@18.3.1)
@@ -2059,6 +2062,11 @@ packages:
       merge2: 1.4.1
       slash: 3.0.0
     dev: true
+
+  /go-go-try@5.0.0:
+    resolution: {integrity: sha512-xdoFt+nZR9/vGZqC8pY8dqE7ANnx6MMsiUV+85P1oJhiNoeViXRLRsKVtiInwhRczje0i9fcA5UKJeUU147u9g==}
+    engines: {node: '>=16'}
+    dev: false
 
   /gopd@1.0.1:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==}

@@ -1,6 +1,16 @@
+import { getFeaturedJobs } from "@/app/_api/public/landing/landing-api";
 import JobCard from "@/components/reusables/job-card";
+import { goTry } from "go-go-try";
 
-export default function FeaturedJobsSection() {
+export default async function FeaturedJobsSection() {
+  const [error, jobs] = await goTry(getFeaturedJobs({ page: 1, limit: 2 }));
+
+  if (error || !jobs) {
+    return null;
+  }
+
+  console.log(jobs);
+
   return (
     <>
       <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">

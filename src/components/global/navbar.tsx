@@ -19,8 +19,11 @@ import { Button } from "../ui/button";
 import MobileMenu from "./mobile-menu";
 import { auth } from "@/app/_api/private/auth";
 import Image from "next/image";
+import { signOut } from "next-auth/react";
+import LogoutButton from "../reusables/logout";
 export default async function Navbar() {
   const user = await auth();
+
   return (
     <>
       <header className="sticky top-0 z-50 bg-white shadow-sm dark:bg-gray-950">
@@ -31,7 +34,7 @@ export default async function Navbar() {
               <span className="text-primary">S</span>MATCH
             </p>
           </Link>
-          <div className="hidden md:block flex-1 max-w-md">
+          <div className="hidden lg:block flex-1 max-w-md">
             <div className="relative">
               <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500 dark:text-gray-400" />
               <Input
@@ -116,36 +119,48 @@ export default async function Navbar() {
                     <DropdownMenuItem>Orders</DropdownMenuItem>
                     <DropdownMenuItem>Settings</DropdownMenuItem>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem>Logout</DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <LogoutButton />
+                    </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>
             ) : (
               <>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button size="default" className="space-x-2">
-                      <span>Register</span>
-                      <ChevronDown className="h-4 w-4" />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end">
-                    <DropdownMenuLabel>
-                      Register as Company or Applicant
-                    </DropdownMenuLabel>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem>
+                <div className="hidden md:block">
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button size="default" className="space-x-2 p-4">
+                        <span>Register/Login</span>
+                        <ChevronDown className="h-4 w-4" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuLabel>
+                        Register as Company or Applicant
+                      </DropdownMenuLabel>
+                      <DropdownMenuSeparator />
+
                       <Link href="/register/user" prefetch={false}>
-                        Applicant Register Page
+                        <DropdownMenuItem className="cursor-pointer">
+                          Applicant Register Page
+                        </DropdownMenuItem>
                       </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
                       <Link href="/register/company" prefetch={false}>
-                        Company Register Page
+                        <DropdownMenuItem className="cursor-pointer">
+                          Company Register Page
+                        </DropdownMenuItem>
                       </Link>
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
+
+                      <DropdownMenuSeparator />
+                      <Link href="/login" prefetch={false}>
+                        <DropdownMenuItem className="cursor-pointer">
+                          Login
+                        </DropdownMenuItem>
+                      </Link>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
               </>
             )}
             <MobileMenu />

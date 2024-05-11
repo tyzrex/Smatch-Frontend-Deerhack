@@ -1,13 +1,21 @@
-import { CircleEqual, Menu } from "lucide-react";
+import { ChevronDown, CircleEqual, Menu } from "lucide-react";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import {
+  DropdownMenuTrigger,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuItem,
+  DropdownMenuContent,
+  DropdownMenu,
+} from "@/components/ui/dropdown-menu";
 import Link from "next/link";
+import { Button } from "../ui/button";
+import { auth } from "@/app/_api/private/auth";
 
 const navLinks = [
   {
@@ -28,7 +36,8 @@ const navLinks = [
   },
 ];
 
-export default function MobileMenu() {
+export default async function MobileMenu() {
+  const user = await auth();
   return (
     <>
       <Sheet>
@@ -55,6 +64,42 @@ export default function MobileMenu() {
                 {link.title}
               </Link>
             ))}
+
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  size="default"
+                  className="space-x-2 py-4 px-0 justify-start text-black"
+                  variant={"ghost"}
+                >
+                  <span>Register/Login</span>
+                  <ChevronDown className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuLabel>
+                  Register as Company or Applicant
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <Link href="/register/user" prefetch={false}>
+                    Applicant Register Page
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href="/register/company" prefetch={false}>
+                    Company Register Page
+                  </Link>
+                </DropdownMenuItem>
+
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <Link href="/login" prefetch={false}>
+                    Login
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </nav>
         </SheetContent>
       </Sheet>
