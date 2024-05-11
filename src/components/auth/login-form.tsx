@@ -46,7 +46,7 @@ export function LoginForm() {
       if (data.type === "company") {
         router.push("/company/dashboard");
       } else {
-        router.push("/");
+        router.push("/user/dashboard");
       }
     } else {
       toast.error(response?.error ?? "Invalid credentials");

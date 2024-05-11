@@ -24,34 +24,8 @@ export default async function DashboardNav() {
             href="#"
           >
             <Package2Icon className="h-6 w-6" />
-            <span className="sr-only">Job Portal</span>
+            <span className="font-extrabold">SMATCH DASHBOARD</span>
           </Link>
-          <nav className="hidden gap-6 text-sm font-medium md:flex">
-            <Link
-              className="hover:text-gray-900 dark:hover:text-gray-50"
-              href="#"
-            >
-              Jobs
-            </Link>
-            <Link
-              className="hover:text-gray-900 dark:hover:text-gray-50"
-              href="#"
-            >
-              Candidates
-            </Link>
-            <Link
-              className="hover:text-gray-900 dark:hover:text-gray-50"
-              href="#"
-            >
-              Analytics
-            </Link>
-            <Link
-              className="hover:text-gray-900 dark:hover:text-gray-50"
-              href="#"
-            >
-              Settings
-            </Link>
-          </nav>
         </div>
         <div className="flex items-center gap-4">
           {user && (

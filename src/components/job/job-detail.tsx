@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
 import { JobData } from "@/types/reusable-types";
 
 import { BriefcaseIcon, CheckIcon, ClockIcon } from "lucide-react";
+import ApplyJob from "./_apply-job";
 
 export default function JobDetail({ data }: { data: JobData }) {
   return (
@@ -20,7 +20,7 @@ export default function JobDetail({ data }: { data: JobData }) {
               </div>
             </div>
             <div className="flex flex-col items-start gap-4">
-              <Button className="w-full">Apply for this job</Button>
+              <ApplyJob jobId={data.id.toString()} />
               <div className="flex items-center gap-2 text-sm">
                 <ClockIcon className="h-4 w-4" />
                 <span>Posted 3 days ago</span>
@@ -55,12 +55,23 @@ export default function JobDetail({ data }: { data: JobData }) {
                 Requirements
               </h2>
               <ul className="mt-6 space-y-4 text-gray-500 dark:text-gray-400">
-                {data?.requirements?.map((requirement, idx: number) => (
-                  <li className="flex items-start gap-2" key={idx}>
-                    <CheckIcon className="h-5 w-5 flex-shrink-0 text-gray-900 dark:text-gray-50" />
-                    <span>{requirement}</span>
-                  </li>
-                )) ?? "No requirements listed"}
+                {data instanceof Array
+                  ? data.map((requirement, idx: number) => (
+                      <li className="flex items-start gap-2" key={idx}>
+                        <CheckIcon className="h-5 w-5 flex-shrink-0 text-gray-900 dark:text-gray-50" />
+                        <span>{requirement}</span>
+                      </li>
+                    ))
+                  : (data.requirements !== null ? (
+                      <>
+                        <li className="flex items-start gap-2">
+                          <CheckIcon className="h-5 w-5 flex-shrink-0 text-gray-900 dark:text-gray-50" />
+                          <span>{data.requirements}</span>
+                        </li>
+                      </>
+                    ) : (
+                      "No requirements listed"
+                    )) ?? "No requirements listed"}
               </ul>
             </div>
           </div>
@@ -72,12 +83,23 @@ export default function JobDetail({ data }: { data: JobData }) {
             <div>
               <h2 className="text-2xl font-bold tracking-tight">Benefits</h2>
               <ul className="mt-6 space-y-4 text-gray-500 dark:text-gray-400">
-                {data?.benefits?.map((benefit, idx: number) => (
-                  <li className="flex items-start gap-2" key={idx}>
-                    <CheckIcon className="h-5 w-5 flex-shrink-0 text-gray-900 dark:text-gray-50" />
-                    <span>{benefit}</span>
-                  </li>
-                )) ?? "No benefits listed"}
+                {data instanceof Array
+                  ? data.map((benefit, idx: number) => (
+                      <li className="flex items-start gap-2" key={idx}>
+                        <CheckIcon className="h-5 w-5 flex-shrink-0 text-gray-900 dark:text-gray-50" />
+                        <span>{benefit}</span>
+                      </li>
+                    ))
+                  : (data.benefits !== null ? (
+                      <>
+                        <li className="flex items-start gap-2">
+                          <CheckIcon className="h-5 w-5 flex-shrink-0 text-gray-900 dark:text-gray-50" />
+                          <span>{data.benefits}</span>
+                        </li>
+                      </>
+                    ) : (
+                      "No benefits listed"
+                    )) ?? "No benefits listed"}
               </ul>
             </div>
             <div>
