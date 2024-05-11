@@ -26,7 +26,7 @@ export default function DashboardUserSidebar() {
               </Link>
               <Link
                 className="flex items-center gap-2 rounded-md py-2 px-3 font-medium hover:bg-gray-100 dark:hover:bg-gray-800"
-                href="/company/jobs/create"
+                href="/user/applied-jobs"
                 prefetch={false}
               >
                 <BriefcaseIcon className="h-5 w-5 text-primary" />
