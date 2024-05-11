@@ -104,7 +104,13 @@ export default async function Navbar() {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
-                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                    <DropdownMenuLabel>
+                      Welcome, {user.name}
+                      <br />
+                      <span className="text-xs text-gray-500">
+                        {user.email}
+                      </span>
+                    </DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem>Profile</DropdownMenuItem>
                     <DropdownMenuItem>Orders</DropdownMenuItem>

@@ -43,7 +43,11 @@ export function LoginForm() {
 
     if (response && response?.error === null) {
       toast.success("Login Success");
-      //   router.replace("/");
+      if (data.type === "company") {
+        router.push("/company/dashboard");
+      } else {
+        router.push("/");
+      }
     } else {
       toast.error(response?.error ?? "Invalid credentials");
     }
