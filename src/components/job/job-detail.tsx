@@ -1,12 +1,9 @@
 import { Button } from "@/components/ui/button";
-import {
-  BriefcaseIcon,
-  CheckIcon,
-  ClockIcon,
-  DollarSignIcon,
-} from "lucide-react";
+import { JobData } from "@/types/reusable-types";
 
-export default function JobDetail() {
+import { BriefcaseIcon, CheckIcon, ClockIcon } from "lucide-react";
+
+export default function JobDetail({ data }: { data: JobData }) {
   return (
     <>
       <section className="bg-gray-100 py-12 md:py-20 dark:bg-gray-800">
@@ -14,12 +11,12 @@ export default function JobDetail() {
           <div className="grid gap-6 md:grid-cols-[1fr_300px] md:gap-12">
             <div>
               <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-                Senior Frontend Engineer
+                {data.title}
               </h1>
               <div className="mt-4 flex items-center space-x-4 text-gray-500 dark:text-gray-400">
-                <span>Acme Inc.</span>
+                <span>{data.company.name}</span>
                 <span className="hidden sm:inline">•</span>
-                <span>San Francisco, CA</span>
+                <span>{data.company.address}</span>
               </div>
             </div>
             <div className="flex flex-col items-start gap-4">
@@ -30,11 +27,13 @@ export default function JobDetail() {
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <BriefcaseIcon className="h-4 w-4" />
-                <span>Full-time</span>
+                <span>
+                  {data.jobType} • {data.jobLocation}
+                </span>
               </div>
               <div className="flex items-center gap-2 text-sm">
-                <DollarSignIcon className="h-4 w-4" />
-                <span>$120k - $150k</span>
+                Rs.
+                <span>{data.jobSalary}</span>
               </div>
             </div>
           </div>
@@ -48,24 +47,7 @@ export default function JobDetail() {
                 Job Description
               </h2>
               <div className="mt-6 space-y-6 text-gray-500 dark:text-gray-400">
-                <p>
-                  We are looking for an experienced Frontend Engineer to join
-                  our growing team. You will be responsible for building and
-                  maintaining our web application, which is the core of our
-                  business.
-                </p>
-                <p>
-                  You will work closely with our design team to implement
-                  pixel-perfect UI components and ensure a seamless user
-                  experience. You will also collaborate with our backend
-                  engineers to integrate your work with the API.
-                </p>
-                <p>
-                  We are looking for someone who is passionate about frontend
-                  development, has a strong understanding of modern JavaScript
-                  frameworks (React, Vue, or Angular), and is committed to
-                  writing clean, maintainable, and performant code.
-                </p>
+                <p>{data.jobDescription}</p>
               </div>
             </div>
             <div>
@@ -147,27 +129,10 @@ export default function JobDetail() {
             </div>
             <div>
               <h2 className="text-2xl font-bold tracking-tight">
-                About Acme Inc.
+                About {data.company.name}
               </h2>
               <div className="mt-6 space-y-4 text-gray-500 dark:text-gray-400">
-                <p>
-                  Acme Inc. is a leading technology company that specializes in
-                  building innovative web applications. We are a fast-growing
-                  startup with a mission to revolutionize the way people
-                  interact with the digital world.
-                </p>
-                <p>
-                  Our team is composed of talented and passionate individuals
-                  who are dedicated to creating exceptional user experiences. We
-                  believe in fostering a collaborative and inclusive work
-                  environment where everyone can thrive and contribute to our
-                  success.
-                </p>
-                <p>
-                  If you&apos;re excited to join a dynamic and forward-thinking
-                  organization, we&apos;d love to hear from you. Apply now and
-                  let&apos;s build something amazing together!
-                </p>
+                <p>{data.company.description}</p>
               </div>
             </div>
           </div>

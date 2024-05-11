@@ -1,6 +1,8 @@
 import { getJobDetail } from "@/app/_api/public/job/job-api";
 import JobDetail from "@/components/job/job-detail";
+import { Button } from "@/components/ui/button";
 import { goTry } from "go-go-try";
+import { BriefcaseIcon, CheckIcon, ClockIcon } from "lucide-react";
 
 interface JobDetailPageProps {
   params: {
@@ -15,11 +17,9 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
     return null;
   }
 
-  console.log(jobDetail);
-
   return (
     <>
-      <JobDetail />
+      <JobDetail data={jobDetail.data} />
     </>
   );
 }
