@@ -21,6 +21,7 @@ import { auth } from "@/app/_api/private/auth";
 import Image from "next/image";
 import LogoutButton from "../reusables/logout";
 import { CommandMenu } from "./command-chat";
+import SearchNav from "./search";
 export default async function Navbar() {
   const user = await auth();
 
@@ -36,12 +37,7 @@ export default async function Navbar() {
           </Link>
           <div className="hidden lg:block flex-1 max-w-md">
             <div className="relative">
-              <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500 dark:text-gray-400" />
-              <Input
-                className="w-full rounded-md border border-gray-200 bg-gray-100 px-10 py-2 text-sm focus:border-gray-400 focus:bg-white focus:outline-none dark:border-gray-800 dark:bg-gray-900 dark:text-gray-50 dark:focus:border-gray-600"
-                placeholder="Search for jobs..."
-                type="search"
-              />
+              <SearchNav />
             </div>
           </div>
           <nav className="hidden gap-4 md:flex">
